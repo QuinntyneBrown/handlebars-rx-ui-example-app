@@ -5,16 +5,18 @@ namespace Handlebars.Rx.UI.Example.App.Controllers
 {
     public class DefaultController : Controller
     {
-        public DefaultController(IPageService pageService)
+        public DefaultController(IContextProvider contextProvider, IPageService pageService)
         {
             _pageService = pageService;
+            _context = contextProvider.Get();
         }
 
         public ActionResult Index()
         {
-            return View(_pageService.Get());
+            return View(_context.RouteName,_pageService.Get());
         }
 
         protected readonly IPageService _pageService;
+        protected readonly Context _context;
     }
 }

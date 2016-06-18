@@ -8,4 +8,5 @@ namespace Handlebars.Rx.UI.Example.App.Infrastructure
         public const string RouteName = "routeName";
         public const string Slug = "slug";
     }
+
 }

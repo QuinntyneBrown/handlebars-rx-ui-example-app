@@ -1,11 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@model Handlebars.Rx.UI.Example.App.Models.PageViewModel
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Handlebars Rx UI Example App</title>
+    <title>Handlebars Rx UI Example App: @ViewBag.Title</title>
 </head>
 <body>
+
+    @Html.Partial("_HeaderPartial", Model.Fragments.Single(x => x.Name == "Header"))
+
     @RenderBody()
 
 

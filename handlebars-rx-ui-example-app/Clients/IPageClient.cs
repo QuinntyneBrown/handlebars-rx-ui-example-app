@@ -1,10 +1,12 @@
-﻿namespace Handlebars.Rx.UI.Example.App.Clients
+﻿using Handlebars.Rx.UI.Example.App.Dtos;
+
+namespace Handlebars.Rx.UI.Example.App.Clients
 {
     public interface IPageClient
     {
-        dynamic GetArticlePage(string slug);
-        dynamic GetVideoPage(string slug);
-        dynamic GetGalleryPage(string slug);
-        dynamic GetArticlesPage();
+        PageDto GetArticlePage(string slug);
+        PageDto GetVideoPage(string slug);
+        PageDto GetGalleryPage(string slug);
+        PageDto GetArticlesPage();
     }
 }

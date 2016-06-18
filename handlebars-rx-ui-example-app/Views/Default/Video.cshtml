@@ -1,0 +1,13 @@
+﻿@model Handlebars.Rx.UI.Example.App.Models.PageViewModel
+@using Newtonsoft.Json;
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var fragment = Model.Fragments.Single(x => x.Name == "ArticlesMainContent");
+}
+
+<div class="handle-rx-ui-articles-container" properties="properties="@JsonConvert.SerializeObject(fragment.Properties)">
+
+</div>
+

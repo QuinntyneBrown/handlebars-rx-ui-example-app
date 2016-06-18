@@ -1,5 +1,6 @@
 ﻿using Handlebars.Rx.UI.Example.App.Models;
 using Handlebars.Rx.UI.Example.App.Clients;
+using Handlebars.Rx.UI.Example.App.Dtos;
 
 namespace Handlebars.Rx.UI.Example.App.Services
 {
@@ -36,32 +37,33 @@ namespace Handlebars.Rx.UI.Example.App.Services
         public PageViewModel GetArticlePage(string slug)
         {
             var response = _pageClient.GetArticlePage(slug);
-
             return new PageViewModel("Article");
         }
 
         public PageViewModel GetArticlesPage()
         {
             var page = new PageViewModel("Articles");
-
-            var response = _pageClient.GetArticlesPage();
-
-            page.Fragments.Add(new FragmentViewModel());
-
+            PageDto response = _pageClient.GetArticlesPage();
+            foreach(var fragment in response.Fragments)
+            {
+                page.Fragments.Add(new FragmentViewModel() {
+                    Name = fragment.Name,
+                    Properties = fragment.Properties
+                });
+            }
+            
             return page;
         }
 
         public PageViewModel GetGalleryPage(string slug)
         {
             var response = _pageClient.GetGalleryPage(slug);
-
             return new PageViewModel("Gallery");
         }
 
         public PageViewModel GetVideoPage(string slug)
         {
             var response = _pageClient.GetVideoPage(slug);
-
             return new PageViewModel("Video");
         }
 

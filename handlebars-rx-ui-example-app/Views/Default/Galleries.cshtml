@@ -1,0 +1,16 @@
+﻿@model Handlebars.Rx.UI.Example.App.Models.PageViewModel
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Serialization;
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="handle-rx-ui-articles-container" 
+     properties="properties="@JsonConvert.SerializeObject(Model.Fragments
+                            .Single(x => x.Name == "GalleriesMainContent").Properties, new JsonSerializerSettings {
+                                ContractResolver = new CamelCasePropertyNamesContractResolver()
+                            })">
+</div>
+

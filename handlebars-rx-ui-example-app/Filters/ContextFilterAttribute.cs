@@ -14,17 +14,12 @@ namespace Handlebars.Rx.UI.Example.App.Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            Context context = _contextProvider.Get();
-            context.RouteName = filterContext.RouteData.GetRouteName();
-            
+            var context = _contextProvider.Get();
+            context.RouteName = filterContext.RouteData.GetRouteName();            
             foreach (var item in filterContext.RouteData.Values)
-            {
                 if (item.Key == Slug)
-                    context.Slug = (string)item.Value;
-            }
-
+                    context.Slug = (string)item.Value;            
             _contextProvider.Set(context);
-
             base.OnActionExecuting(filterContext);
         }
 
